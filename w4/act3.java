@@ -1,21 +1,21 @@
-package week4; 
+package w4;
+
 import java.util.Scanner;
-public class act3 {
+public class Act3 {
     public static void main(String[] args) {
-        Scanner userInput = new Scanner(System.in);
-        System.out.print("Insert your amount of money: ");
-        double money = userInput.nextDouble();
-        System.out.print("Rate: ");
-        double rate = userInput.nextDouble();
-        System.out.print("Amount of years: ");
-        double years = userInput.nextDouble();
-        userInput.close();
+        Scanner scanner = new Scanner(System.in);
+       
+        System.out.println("Enter the amount of money: ");
+        double amount = scanner.nextDouble();
+        System.out.println("Enter the numbers of years: ");
+        int years = scanner.nextInt();
+        scanner.close();
+
+        double rate = 6.8;
         for (int i = 0; i < years; i++) {
-            money += money * rate / 100;
+            amount += amount * (rate / 100);
         }
-        String processedMoney = String.valueOf(money);
-        int indexMoney = processedMoney.indexOf(".");
-        processedMoney = processedMoney.substring(0, indexMoney) + processedMoney.substring(indexMoney, indexMoney + 3);
-        System.out.print("After " + years + " years, you will receive: " + processedMoney);
+        System.out.println("The amount of money after " + years + " years is " + amount);
     }
+    
 }

@@ -1,15 +1,18 @@
-package week4; 
-public class act2 {
+package w4;
+
+public class Act2 {
     public static void main(String[] args) {
-        for (int numbers = 1; numbers <= 100; numbers++) {
-            boolean primeNumber = (numbers != 1);
-            for (int testNumber = 2; testNumber < numbers; testNumber++) {
-                if (numbers % testNumber == 0) {
-                    primeNumber = false;
+        System.out.println("List of prime numbers:");
+        for (int n = 0; n < 101; n++) {
+            boolean isPrime = (n != 1);
+            for (int i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    isPrime = false;
+                    break;
                 }
             }
-            if (primeNumber) {
-                System.out.print("[" + numbers + "]" + " ");
+            if (isPrime) {
+                System.out.print(n + " ");
             }
         }
 

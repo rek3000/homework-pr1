@@ -1,13 +1,15 @@
-package week4;
-import java.util.Scanner;
-public class act8 {
+package w4;
+
+import java.util.*;
+public class Act8 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
         sc.close();
-        for (int i = 1; i <= input.length(); i++) {
-            System.out.println(input.substring((input.length() + i - 2), (input.length() + i)));
 
+        for (int i = str.length(); i > 0; --i) {
+            System.out.print(str.charAt(i - 1));
         }
     }
 }

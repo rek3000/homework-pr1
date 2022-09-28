@@ -1,56 +1,87 @@
+package w5;
+
 import java.util.*;
 public class Act2 {
-  public static void main(String[] args) {
-    String str = input(); 
-    printUpper(str);
-    System.out.println();
-    secondLetter(str);
-    System.out.println();
-    vowels(str);
-  } 
 
-  public static String input() {
-    Scanner sc = new Scanner(System.in); 
-    String str = sc.nextLine();
+    
+    public static void mainA() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        sc.close();
 
-    return str;
-  }
-
-  public static void printUpper(String str) { 
-    System.out.println("The uppercase letters: ");
-    for (int i = 0; i < str.length(); i++) {
-      if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
-        System.out.print(str.charAt(i) + " ");
-      }
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isUpperCase(str.charAt(i))) {
+                System.out.print(str.charAt(i) + " " );
+            }
+        }
+        System.out.println();
     }
-  }
 
-  public static void secondLetter(String str) {
-    System.out.println("Every second letter: ");
-    for (int i = 1; i < str.length(); i+=2) {
-      System.out.print(str.charAt(i)); 
-    } 
-  }
+    public static void mainB() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        sc.close();
 
-  public static void vowels(String str) {
-    String testStr = "aueoiAUEOI";
-    String temp = str;
-    int numberOfVowels = 0;
-    for (int i = 0; i < str.length(); i++) {
-      if (testStr.indexOf(str.charAt(i)) >= 0) {
-        str = str.replace(str.charAt(i),'_'); 
-        numberOfVowels++;
-      }
+        for (int i = 1; i < str.length(); i += 2) {
+            System.out.print(str.charAt(i));
+        }
     }
-    System.out.println("String after replaced: ");
-    System.out.println(str);
-    System.out.println("The number of vowels is " + numberOfVowels);
+    
+    public static void mainC() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        sc.close();
 
-    System.out.print("The positions of all vowels are ");
-    for (int i = 0; i < temp.length(); i++) {
-      if (testStr.indexOf(temp.charAt(i)) >= 0) {
-        System.out.print(i + " ");
-      }
+        System.out.println(str.replaceAll("[AaEeUuOoIi]", "_"));
     }
-  }
+
+    public static void mainD() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        sc.close();
+
+        int count = 0;
+        str.toLowerCase();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'a'
+            || str.charAt(i) == 'e'
+            || str.charAt(i) == 'i'
+            || str.charAt(i) == 'o'
+            || str.charAt(i) == 'u') {
+                count = count + 1;
+            }
+        }
+        System.out.println("The number of vowels in the string: " + count);
+    }
+
+    public static void mainE() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        sc.close();
+        
+        str.toLowerCase();
+        System.out.println("The positions of all vowels in the string: ");
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'a'
+            || str.charAt(i) == 'e'
+            || str.charAt(i) == 'i'
+            || str.charAt(i) == 'o'
+            || str.charAt(i) == 'u') {
+                System.out.println((i+1) + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        mainE();
+    }
 }
+
+
+
+

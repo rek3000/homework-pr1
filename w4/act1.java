@@ -1,9 +1,11 @@
-package week4; 
-public class act1 {
+package w4;
+
+public class Act1 {
     public static void main(String[] args) {
-        for (int i = 0; i <= 10; i ++ ) {
-            System.out.print(i);
-            System.out.print("\n");
+        int i;
+        System.out.println("The first 10 natural numbers are:");
+        for (i = 1 ; i < 11; i++) {
+        System.out.println(i);
         }
     }
 }

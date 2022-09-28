@@ -1,18 +1,16 @@
-package week4;
-public class act7 {
+package w4;
+
+public class Act7 {
     public static void main(String[] args) {
-        System.out.print("Armstrong number: ");
-        for (int i = 100; i <= 1000; i++) {
-            int x, sum = 0;
-            for (int j = 1; j <= String.valueOf(i).length(); j++) {
-                x = i % 10;
-                i = i / 10;
-                sum = 0 + (x * x * x);
-                if (sum == i) {
-                    System.out.print(sum + " ");
-                }
+        int i;
+         
+        for (i = 100; i < 1000; i++) {
+            int c = i % 10;
+            int b = ((i % 100) - c) / 10;
+            int a = i / 100;
+            if (a*a*a + b*b*b + c*c*c == i) {
+                System.out.println(i);
             }
         }
-        System.out.println("done");
     }
 }

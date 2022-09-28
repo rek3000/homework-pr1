@@ -1,23 +1,23 @@
+package w5;
+
 import java.util.*;
 public class Act5 {
-  public static void main(String[] args) {
-    int x = input();
-    System.out.println("Thank you, " + x + " it is.");
-  }
-
-  public static int input() {
-    Scanner sc = new Scanner(System.in);
-    int x = 0;
-    while (x <= 10 || x >= 20) {
-      try {
-        x = sc.nextInt();
-      } catch (Exception e) {
-        sc.nextLine();
-        System.out.print("Must >= 10 and <= 20: ");
-        continue;
-      }
-    } 
-    sc.close();
-    return x;
-  } 
+    public static void main(String[] args) {
+        int n;
+        Scanner sc = new Scanner(System.in);
+        
+        while (true) {
+            System.out.println("Enter a integer between 10 and 20: ");
+            n = sc.nextInt();  
+            
+            if (n < 10 || n > 20) {
+            System.out.println("But you must enter an integer between 10 and 20: " + n);
+            continue;
+            } else {
+            System.out.println("Thank you, " + n + " it is!");
+            break;
+            }
+        }
+        sc.close();
+    }
 }

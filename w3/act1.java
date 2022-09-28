@@ -1,29 +1,30 @@
-package week3;
-import java.util.Scanner;
+package w3;
 
-public class act1 {
+import java.util.*;
+public class Act1 {
     public static void main(String[] args) {
-        System.out.print("Please enter a real number: ");
         Scanner sc = new Scanner(System.in);
-        double number = sc.nextDouble();
+        System.out.println("Enter a real number: ");
+        float real = sc.nextFloat();
         sc.close();
-        if (number == 0) {
-            System.out.println("The number is zero.");
-        } else if (number > 0) {
-            if (number < 1) {
-                System.out.println("A small positive number.");
-            } else if (number > 1000000) {
-                System.out.println("A large positive number.");
-            } else {
-                System.out.println("A positive number.");
+
+        if (real == 0) {
+            System.out.println("The number is zero");
+        }
+
+        if (Math.abs(real) < 1) {
+            if (real < 0) {
+                System.out.println("A small negative number");
+            } else if (real > 0) {
+                System.out.println("A small positive number");
             }
-        } else {
-            if (number > -1) {
-                System.out.println("A small negative number.");
-            } else if (number < -1000000) {
-                System.out.println("A large negative number.");
-            } else {
-                System.out.println("A negative number.");
+        }
+
+        if (Math.abs(real) > 1) {
+            if (real < 0) {
+                System.out.println("A large negative number");
+            } else if (real > 0) {
+                System.out.println("A large positive number");
             }
         }
     }

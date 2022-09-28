@@ -1,23 +1,24 @@
-package week4;
-import java.util.Scanner;
-public class act11 {
+package w4;
+
+public class Act11 {
     public static void main(String[] args) {
-        Scanner user = new Scanner(System.in);
-        System.out.print("Input the number of rows for the triangle: ");
-        int rows = user.nextInt();
-        int halfRows = rows / 2;
-        user.close();
-        for (int i = 1; i <= halfRows + 1; i ++) {
-            for(int j = 1; j <= i; j ++) {
+    
+        int row = 5; // so hang cua nua dau kim tu thap
+        
+        // first-half pyramid
+        for (int i = 1; i <= 2*row - 1; i += 2) { // tang 2 * -> row*2
+            for (int j = 1; j <= i; j++) { // i + 1 -> j loop them 1 vong -> tang 1 *
                 System.out.print("* ");
             }
             System.out.println();
         }
-        for (int i = 1; i <= halfRows; i ++) {
-            for(int j = halfRows; j >= i; j --) {
+
+        //second-half pyramid
+        for (int i = 2*row - 3; i >= 1; i -= 2) {
+            for (int j = 1; j <= i; j++) { // i - 1 -> j loop them 1 vong -> giam 1 *
                 System.out.print("* ");
             }
             System.out.println();
         }
-    } 
+    }
 }
