@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Act2 {
   public static void main(String[] args) {
     String str = input(); 
@@ -8,14 +9,12 @@ public class Act2 {
     System.out.println();
     vowels(str);
   } 
-
   public static String input() {
     Scanner sc = new Scanner(System.in); 
     String str = sc.nextLine();
-
+    sc.close(); 
     return str;
   }
-
   public static void printUpper(String str) { 
     System.out.println("The uppercase letters: ");
     for (int i = 0; i < str.length(); i++) {

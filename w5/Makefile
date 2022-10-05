@@ -1,8 +1,7 @@
-
-%.class:
+$(proj).class:
 	javac $(proj).java	
 
-run: %.class
+run: $(proj).class
 	java $(proj)
 
 clean:
