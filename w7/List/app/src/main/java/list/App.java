@@ -5,6 +5,7 @@ package list;
 import java.util.*;
 
 public class App {
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		List array1 = new List();
 		Scanner input = new Scanner(System.in);
@@ -48,4 +49,13 @@ public class App {
 
 		input.close();
 	}
+=======
+    public static void main(String[] args) {
+			List array1 = new List();
+			array1.add(10);
+
+		System.out.println(Arrays.toString(array1.arr));
+			
+    }
+>>>>>>> 17e1d7825c85569685df2d5e3745b14e788200ff
 }

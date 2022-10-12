@@ -13,7 +13,10 @@ public class List {
 		this.count = 0;
 	}
 
+<<<<<<< HEAD
 	// relocate and add an element
+=======
+>>>>>>> 17e1d7825c85569685df2d5e3745b14e788200ff
 	public void add(int number) {
 		int newArr[] = new int[arr.length + 1];
 		for (int i = 0; i < arr.length; i++) {
@@ -24,6 +27,7 @@ public class List {
 		arr[count++] = number;
 	}
 
+<<<<<<< HEAD
 	public int get(int index) {
 		if (index >= arr.length || index < 0) { return -1;}
 		return this.arr[index];	
@@ -50,5 +54,9 @@ public class List {
 			newArr[i] = arr[i];
 		} 	
 		arr = newArr;
+=======
+	public void get(int index) {
+
+>>>>>>> 17e1d7825c85569685df2d5e3745b14e788200ff
 	}
 }
