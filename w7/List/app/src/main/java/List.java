@@ -30,6 +30,7 @@ public class List {
 	}
 
 	// remove an element and relocate
+	// the parameter for the method is an index, feel free to modify it to use the value instead
 	public void remove(int number) {
 		int newArr[] = new int[arr.length - 1];
 		int count = 0;
