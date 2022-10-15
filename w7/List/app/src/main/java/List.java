@@ -43,8 +43,10 @@ public class List {
 		} 	
 		arr = newArr;
 	}
-
+	
+	
 	// remove the lastest element
+	// this haven't work
 	public void remove() {
 		int newArr[] = new int[arr.length - 1];
 		for (int i = 0; i < arr.length - 1; i++) {
