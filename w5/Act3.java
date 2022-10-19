@@ -1,5 +1,10 @@
+import java.util.Scanner;
+
 public class Act3 {
   public static void main(String[] args) {
-    System.out.println("hello");    
+		Scanner input = new Scanner(System.in);
+		float number = input.nextInt();
+
+	
   }
 }

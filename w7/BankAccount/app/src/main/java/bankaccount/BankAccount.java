@@ -27,8 +27,8 @@ public class BankAccount {
 		this.withraw(10);	
 	}
 
-	public void addInterst(double interest) {
-			balance += (balance*interest); 
+	public void addInterest(double interest) {
+		balance += (balance*interest); 
 		transactions++;
 	}
 

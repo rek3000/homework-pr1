@@ -12,15 +12,19 @@ public class Act4 {
     System.out.println(Arrays.toString(arrStr));
     int result = caculateSum(arrStr);
     System.out.println(result); 
+		
+		//
     if (result % 10 == 0) {
       System.out.println("The card number is valid"); 
     } else {
       System.out.println("Invalid!"); 
-    }
+    } 
+
+		sc.close();
   }
 
   public static String input() {
-    Scanner sc = new Scanner(System.in); 
+    final Scanner sc = new Scanner(System.in); 
     String str = sc.nextLine();
     return str;
   }
