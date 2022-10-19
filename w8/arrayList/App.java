@@ -14,9 +14,7 @@ public class App {
 	System.out.println(Arrays.toString(out));
 
 	for (int i = 0; i < def.length; i++) {
-		if ((def[i] % 10) >= 0 && (def[i] % 10) <= 9) {
 			out[def[i] % 10]++;
-		}
 	}
 
 	System.out.println(Arrays.toString(out));
