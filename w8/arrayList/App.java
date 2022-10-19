@@ -1,8 +1,15 @@
 import java.util.*;
 public class App {
 	public static void main (String[] args) {
-	int[] def = {9, 29, 44, 103, 2, 52, 12, 12, 76, 35, 20};
+	Scanner input = new Scanner(System.in);
+	System.out.print("Enter the number of elements of the array: ");
+	int n = input.nextInt();
+	int[] def = new int[n];
 
+	System.out.print("Enter the elements of the array: ");
+	for (int i = 0; i < n; i++) {
+ 		def[i] = input.nextInt();	
+ }
 	int[] out = new int[10];
 	System.out.println(Arrays.toString(out));
 
