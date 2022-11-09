@@ -35,7 +35,7 @@ public class Main {
         System.out.println();
         System.out.println("Listing all items..."); 
         System.out.println();
-        itemList(list);
+        itemList();
         break;
         case 3:
         System.out.println();
@@ -75,7 +75,7 @@ public class Main {
       ObjectOutputStream oos = new ObjectOutputStream(fos);
       oos.writeObject(list);
       oos.close();
-      
+
     } catch (Exception e) {
 
     }
@@ -84,7 +84,19 @@ public class Main {
 
   }
 
-  public static void itemList(ArrayList<String> list) {
+  public static void itemList() {
+    ArrayList<String> tempList = new ArrayList<String>();
+    File f = new File("data.bin");
+
+    try {
+      FileInputStream fis = new FileInputStream (f);
+      ObjectInputStream ois = new ObjectInputStream(fis);
+      tempList = (ArrayList) ois.readObject();
+      ois.close();
+
+    } catch (Exception e) {
+
+    }
     for (int i = 0; i < list.size(); i++) {
       System.out.println(list.get(i)); 
     }  
