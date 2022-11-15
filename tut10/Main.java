@@ -25,7 +25,6 @@ public class Main {
       // handling choice
       switch (choice) {
         case 1:
-        System.out.println("Adding a new item..."); 
         System.out.println();
         System.out.print("How many do you want? ");
         int number = input.nextInt();
@@ -33,9 +32,8 @@ public class Main {
         break;
         case 2:
         System.out.println();
-        System.out.println("Listing all items..."); 
+        itemList(list);
         System.out.println();
-        itemList();
         break;
         case 3:
         System.out.println();
@@ -77,21 +75,20 @@ public class Main {
       oos.close();
 
     } catch (Exception e) {
-
     }
 
 
 
   }
 
-  public static void itemList() {
+  public static void itemList(ArrayList<String> list) {
     ArrayList<String> tempList = new ArrayList<String>();
     File f = new File("data.bin");
 
     try {
       FileInputStream fis = new FileInputStream (f);
       ObjectInputStream ois = new ObjectInputStream(fis);
-      tempList = (ArrayList) ois.readObject();
+      tempList = (ArrayList<String>) ois.readObject();
       ois.close();
 
     } catch (Exception e) {
@@ -100,9 +97,10 @@ public class Main {
     for (int i = 0; i < list.size(); i++) {
       System.out.println(list.get(i)); 
     }  
+
   }
 
-  public static void editItem() {
+  public static void editItem(ArrayList<String> list, int index) {
 
   }
 
