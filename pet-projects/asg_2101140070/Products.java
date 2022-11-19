@@ -9,8 +9,7 @@ public class Products {
     this.quantity = quantity;
   }
 
-  @Override
-  public String toString() {
+  public String getInfo() {
     return ("Name: " + this.name + " " + 
     "Price: " + this.price + " " + 
     "Quantity: " + this.quantity);
