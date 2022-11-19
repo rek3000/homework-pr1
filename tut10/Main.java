@@ -89,7 +89,10 @@ public class Main {
     try {
       FileInputStream fis = new FileInputStream (f);
       ObjectInputStream ois = new ObjectInputStream(fis);
-      tempList = (ArrayList<String>) ois.readObject();
+      Object tmp = ois.readObject();
+      if (tmp instanceof ArrayList<?>) {
+        tempList = (ArrayList<?>) tmp;
+      }
       ois.close();
 
     } catch (Exception e) {
