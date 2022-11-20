@@ -25,7 +25,6 @@ public class Init {
       System.out.println("------------------------------------------");
       System.out.print("> ");
 
-      initScan.nextLine();
       char choice = initScan.next().charAt(0);
 
       if ((choice < '1') || (choice > '9')) {
@@ -56,6 +55,7 @@ public class Init {
           break;
 
         case '6':
+          Utils.sortProductByPrice(list);
           break;
 
         case '7':
