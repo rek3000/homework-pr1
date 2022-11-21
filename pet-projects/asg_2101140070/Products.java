@@ -1,4 +1,5 @@
-public class Products {
+import java.io.*;
+public class Products implements Serializable{
   String name;
   double price;
   long quantity;

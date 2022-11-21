@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Utils {
   static Scanner utilScan = new Scanner(System.in);
@@ -142,32 +143,56 @@ public class Utils {
   }
 
   public static void sortProductByPrice(ArrayList<Products> list) {
-    TreeMap<Double, Integer> tree = new TreeMap<Double, Integer>();
-
-    for (int i = 0; i < list.size(); i++) {
-      tree.put(list.get(i).price, i);
-    }
-    System.out.println(tree);
-
-    // get id according to price from TreeMap
-    int indexOfMinValue;
-    for (int i = 0; i < list.size(); i++) {
-      indexOfMinValue = tree.get(tree.firstKey());
-      System.out.println(list.get(indexOfMinValue).getInfo());
-      tree.remove(tree.firstKey());
-    }
+    // TreeMap<Double, Integer> tree = new TreeMap<Double, Integer>();
+    //
+    // for (int i = 0; i < list.size(); i++) {
+    //   tree.put(list.get(i).price, i);
+    // }
+    // // System.out.println(tree);
+    //
+    // // get id according to price from TreeMap
+    // int indexOfMinValue;
+    // for (int i = 0; i < list.size(); i++) {
+    //   indexOfMinValue = tree.get(tree.firstKey());
+    //   System.out.println(list.get(indexOfMinValue).getInfo());
+    //   tree.remove(tree.firstKey());
+    // }
+    // ArrayList<Double, String> tmp = new ArrayList<Double, String>();
+    // for (int i = 0; i < list.size(); i++) {
+    //   tmp.add(list.get(i).price, list.get(i).name);
+    // }
 
     System.out.println();
-
-
   }
 
   public static void saveProductsToFile(ArrayList<Products> list) {
+    System.out.print("Enter file name: ");
+    File f = new File(utilScan.nextLine());
+    try {
+      FileOutputStream fos = new FileOutputStream(f);
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+      oos.writeObject(list);
+      oos.flush();
+      oos.close();
 
+    } catch (Exception e) {
+    }
   }
 
   public static void loadProductsFromFile(ArrayList<Products> list) {
+    System.out.print("Enter file name: ");
+    File f = new File(utilScan.nextLine());
+    try {
+      FileInputStream fis = new FileInputStream(f);
+      ObjectInputStream ois = new ObjectInputStream(fis);
+      ArrayList<Products> tmp = (ArrayList<Products>) ois.readObject();
+      ois.close();
+      list.clear();
 
+      for (int i = 0; i < tmp.size(); i++) {
+        list.add(new Products(tmp.get(i).name, tmp.get(i).price, tmp.get(i).quantity));
+      }
+    } catch (Exception e) {
+    }
   }
-
 }

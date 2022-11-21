@@ -59,9 +59,11 @@ public class Init {
           break;
 
         case '7':
+          Utils.saveProductsToFile(list);
           break;
 
         case '8':
+          Utils.loadProductsFromFile(list);
           break;
 
         case '9':
