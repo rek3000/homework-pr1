@@ -24,6 +24,7 @@ public class Init {
       System.out.println("| [9]. Exit                              |");
       System.out.println("------------------------------------------");
       System.out.print("> ");
+      
 
       char choice = initScan.next().charAt(0);
 
