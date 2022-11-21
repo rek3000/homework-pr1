@@ -170,7 +170,31 @@ public class Utils {
   }
 
   public static void sortProductByPrice(ArrayList<Products> list) {
+    ArrayList<String> mapKeys = new ArrayList<>();
+    ArrayList<Double> mapValues = new ArrayList<>();
+    
+    Collections.sort(mapKeys);
+    Collections.sort(mapValues);
 
+    // ArrayList<Products> sorted = new ArrayList<>();
+
+    for (int i = 0; i < list.size(); i++) {
+      mapKeys.add(list.get(i).name);
+      mapValues.add(list.get(i).price);
+    }
+    
+    for (int i = 0; i < mapValues.size(); i++) {
+      Double val = mapValues.get(i);
+
+      for (int j = 0; j < mapKeys.size(); i++) {
+        String key = mapKeys.get(j);
+
+        if ((val == (Double) list.get(j).price) && (key.equals(list.get(j).name))) {
+          System.out.println(list.get(j).getInfo());
+          break;
+        }
+      }
+    }
     System.out.println();
   }
 
