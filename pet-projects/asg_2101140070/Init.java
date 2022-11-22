@@ -26,49 +26,54 @@ public class Init {
       System.out.print("> ");
       
 
-      char choice = initScan.next().charAt(0);
-
-      if ((choice < '1') || (choice > '9')) {
+      int choice;
+      try {
+        choice = initScan.nextInt();
+        initScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+      } catch (Exception e) {
+        initScan.nextLine();
         continue;
-      } else if (choice == '9') { 
+      }
+
+      if ((choice < 1) || (choice > 9)) {
+        continue;
+      } else if (choice == 9) { 
         break;
       }
 
       switch (choice) {
-        case '1':
+        case 1:
           Utils.addProduct(list);
           break;
 
-        case '2':
+        case 2:
           Utils.displayProduct(list);
           break;
 
-        case '3':
+        case 3:
           Utils.deleteProduct(list);
           break;
 
-        case '4':
+        case 4:
           Utils.editProduct(list);
           break;
 
-        case '5':
+        case 5:
           Utils.searchProductByName(list);
           break;
 
-        case '6':
+        case 6:
           Utils.sortProductByPrice(list);
           break;
 
-        case '7':
+        case 7:
           Utils.saveProductsToFile(list);
           break;
 
-        case '8':
+        case 8:
           Utils.loadProductsFromFile(list);
           break;
 
-        case '9':
-          break;
         default:
           break;
       }
