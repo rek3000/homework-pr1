@@ -170,30 +170,52 @@ public class Utils {
   }
 
   public static void sortProductByPrice(ArrayList<Products> list) {
-    ArrayList<String> mapKeys = new ArrayList<>();
-    ArrayList<Double> mapValues = new ArrayList<>();
-    
-    Collections.sort(mapKeys);
-    Collections.sort(mapValues);
-
-    // ArrayList<Products> sorted = new ArrayList<>();
+    List<String> mapNames = new ArrayList<>();
+    List<Double> mapPrices = new ArrayList<>();
+    HashMap<String, String> idCheck = new HashMap<>();
 
     for (int i = 0; i < list.size(); i++) {
-      mapKeys.add(list.get(i).name);
-      mapValues.add(list.get(i).price);
+      idCheck.put(list.get(i).name, list.get(i).id);
     }
-    
-    for (int i = 0; i < mapValues.size(); i++) {
-      Double val = mapValues.get(i);
 
-      for (int j = 0; j < mapKeys.size(); i++) {
-        String key = mapKeys.get(j);
+    for (int i = 0; i < list.size(); i++) {
+      mapNames.add(list.get(i).name);
+      mapPrices.add(list.get(i).price);
+    }
 
-        if ((val == (Double) list.get(j).price) && (key.equals(list.get(j).name))) {
-          System.out.println(list.get(j).getInfo());
+    Collections.sort(mapNames);
+    Collections.sort(mapPrices);
+
+    Double price;
+    String name;
+    System.out.println(mapNames);
+    System.out.println(mapPrices);
+
+    int i = list.size();
+    while (i > 0) {
+      try {
+        price = mapPrices.get(0);
+      } catch (Exception e) {
+        break;
+      }
+
+      for (int j = 0; j < list.size(); j++) {
+        try {
+          name = mapNames.get(j);
+        } catch (Exception e) {
           break;
         }
+
+        for (int x = 0; x < list.size(); x++) {
+          if ((price == list.get(x).price) && (name.equals(list.get(x).name))) {
+            System.out.println(list.get(x).getInfo());
+            mapPrices.remove(0);
+            mapNames.remove(j);
+            break;
+          }
+        }
       }
+      --i;
     }
     System.out.println();
   }
