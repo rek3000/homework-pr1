@@ -127,12 +127,12 @@ public class Utils {
     }
 
     System.out.println("*---------------------PRODUCTS---------------------*");
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
     for (int i = 0; i < list.size(); ++i) {
       System.out.println(list.get(i).getInfo());
     }
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
   }
 
   public static void deleteProduct(ArrayList<Products> list) {
@@ -244,7 +244,7 @@ public class Utils {
 
 
     // Case-Insensitive Search
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
     if (!(keyWord == "")) {
       for (int i = 0; i < list.size(); i++) {
@@ -253,10 +253,10 @@ public class Utils {
         } 
       }
     }
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
   }
 
-
+  // Sort by price. Additionally, when two prices are the same, also sort names.
   public static void sortProductByPrice(ArrayList<Products> list) {
     if (list.size() < 1) {
       System.out.println("Null list!");
@@ -278,27 +278,18 @@ public class Utils {
     String name;
     int i = list.size();
 
-    // Sort by price. Additionally, when two prices are the same, also sort names.
     System.out.println("*------------------SORT BY PRICE-------------------*");
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
-    while (i > 0) {
-      try {
-        price = mapPrices.get(0);
-      } catch (Exception e) {
-        break;
-      }
+    while (!mapPrices.isEmpty()) { 
+      price = mapPrices.get(0);
 
-      for (int j = 0; j < list.size(); j++) {
-        try {
-          name = mapNames.get(j);
-        } catch (Exception e) {
-          break;
-        }
+      for (int j = 0; j < mapNames.size(); j++) {
+        name = mapNames.get(j);
 
         for (int x = 0; x < list.size(); x++) {
           if ((price == list.get(x).price) &&
-        (name.equals(list.get(x).name))) {
+             (name.equals(list.get(x).name))) {
             System.out.println(list.get(x).getInfo());
             mapPrices.remove(0);
             mapNames.remove(j);
@@ -306,9 +297,8 @@ public class Utils {
           }
         }
       }
-      --i;
     }
-    System.out.println("----------------------------------------------------");
+    System.out.println("+--------------------------------------------------+");
   }
 
   // Save/load list of products to/from a binary file

@@ -13,7 +13,7 @@ public class Init {
   private static void menuLoop(ArrayList<Products> list) {
     while (true) {
       System.out.println();
-      System.out.println("------------------------------------------");
+      System.out.println("+----------------------------------------+");
       System.out.println("| [1]. Add products                      |");
       System.out.println("| [2]. Display products                  |");
       System.out.println("| [3]. Delete a product                  |");
@@ -23,7 +23,7 @@ public class Init {
       System.out.println("| [7]. Save products to binary file      |");
       System.out.println("| [8]. Load products from the saved file |");
       System.out.println("| [9]. Exit                              |");
-      System.out.println("------------------------------------------");
+      System.out.println("+----------------------------------------+");
       System.out.print("> ");
       
 
