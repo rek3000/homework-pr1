@@ -36,9 +36,10 @@ public class Utils {
     // Add items
     for (int i = 0; i < n; i++) {
       System.out.println();
+      System.out.println("Product " + n);
       System.out.println("Name");  
       System.out.print("> ");  
-      name = utilScan.nextLine();
+      name = utilScan.nextLine().trim();
       while (true) {
         System.out.println("Price");  
         System.out.print("> ");
@@ -53,7 +54,7 @@ public class Utils {
       }
 
       int choice = 0;
-      for (int j = 0; j < list.size(); i++) {
+      for (int j = 0; j < list.size(); j++) {
         if ((name.equals(list.get(j).name) && (price == list.get(j).price))) {
           System.out.println("This item has existed");
           System.out.println("Increment the quantity of this?");
@@ -85,11 +86,7 @@ public class Utils {
               }
             }
 
-          try {
-            list.set(j, new Products(name, price, quantity + list.get(j).quantity));
-          } catch (Exception e) {
-            break;
-          }
+          list.set(j, new Products(name, price, quantity + list.get(j).quantity));
           utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
           return;
           }
@@ -115,12 +112,7 @@ public class Utils {
         }
       }
 
-      try {
-        list.add(new Products(name, price, quantity));
-        
-      } catch (Exception e) {
-        break;
-      }
+      list.add(new Products(name, price, quantity));
       utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
     }
 
