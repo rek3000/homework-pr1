@@ -1,13 +1,12 @@
 import java.util.*;
 import java.io.*;
 
-public class Utils {
-  static Scanner utilScan = new Scanner(System.in);
-
-  /* In this class, the existence for the nextLine() or skip() 
+/* In this class, the existence for the nextLine() or skip() 
    * is to prevent the next*() method to get the new line char.
    * , which could possibly raise errors.
    * */
+public class Utils {
+  static Scanner utilScan = new Scanner(System.in);
 
   public static void addProduct(ArrayList<Products> list) {
     String name;
@@ -86,9 +85,9 @@ public class Utils {
               }
             }
 
-          list.set(j, new Products(name, price, quantity + list.get(j).quantity));
-          utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-          return;
+            list.set(j, new Products(name, price, quantity + list.get(j).quantity));
+            utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+            return;
           }
 
           break;
