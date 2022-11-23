@@ -12,6 +12,7 @@ public class Init {
 
   private static void menuLoop(ArrayList<Products> list) {
     while (true) {
+      System.out.println();
       System.out.println("------------------------------------------");
       System.out.println("| [1]. Add products                      |");
       System.out.println("| [2]. Display products                  |");
@@ -29,9 +30,9 @@ public class Init {
       int choice;
       try {
         choice = initScan.nextInt();
-        initScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
       } catch (Exception e) {
         initScan.nextLine();
+        System.out.println("INVALID!");
         continue;
       }
 
@@ -40,6 +41,7 @@ public class Init {
       } else if (choice == 9) { 
         break;
       }
+      initScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
       switch (choice) {
         case 1:

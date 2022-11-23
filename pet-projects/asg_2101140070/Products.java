@@ -14,10 +14,10 @@ public class Products implements Serializable{
   }
 
   public String getInfo() {
-    return ("ID: " + this.id + " " +
-    "Name: " + this.name + " " + 
-    "Price: " + this.price + " " + 
-    "Quantity: " + this.quantity);
+    return ("| " + this.id + " ".repeat((8 - this.id.length())) + 
+            "| " + this.name + " ".repeat((13 - this.name.length())) + 
+            "| " + this.price + " ".repeat((10 - String.valueOf(this.price).length())) + 
+            "| " + this.quantity + " ".repeat((12 - String.valueOf(this.quantity).length())) + "|");
   }
 
 }

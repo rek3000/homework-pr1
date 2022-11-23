@@ -52,6 +52,56 @@ public class Utils {
         }
       }
 
+      int choice = 0;
+      for (int j = 0; j < list.size(); i++) {
+        if ((name.equals(list.get(j).name) && (price == list.get(j).price))) {
+          System.out.println("This item has existed");
+          System.out.println("Increment the quantity of this?");
+          System.out.println("[1]. No");
+          System.out.println("[2]. Yes");
+          System.out.print("> ");
+
+          while (true) {
+            try {
+              choice = utilScan.nextInt();
+              break;
+            } catch (Exception e) {
+              System.out.println("INVALID!");
+              utilScan.nextLine();
+              continue;
+            }
+          }
+          if (choice == 2) {
+            while (true) {
+              System.out.println("Quantity");  
+              System.out.print("> ");
+              try {
+                quantity = utilScan.nextLong();
+                break;
+              } catch (Exception e) {
+                System.out.println("INVALID");
+                utilScan.nextLine();
+                continue;
+              }
+            }
+
+          try {
+            list.set(j, new Products(name, price, quantity + list.get(j).quantity));
+          } catch (Exception e) {
+            break;
+          }
+          utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+          return;
+          }
+
+          break;
+        }
+      }
+
+      if (choice == 1) {
+        continue;
+      }
+
       while (true) {
         System.out.println("Quantity");  
         System.out.print("> ");
@@ -65,7 +115,12 @@ public class Utils {
         }
       }
 
-      list.add(new Products(name, price, quantity));
+      try {
+        list.add(new Products(name, price, quantity));
+        
+      } catch (Exception e) {
+        break;
+      }
       utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
     }
 
@@ -73,7 +128,6 @@ public class Utils {
     System.out.println("****");
     System.out.println("DONE");
     System.out.println("****");
-    System.out.println();
   }
   public static void displayProduct(ArrayList<Products> list) {
     if (list.size() < 1) {
@@ -81,12 +135,13 @@ public class Utils {
       return;
     }
 
+    System.out.println("*---------------------PRODUCTS---------------------*");
+    System.out.println("----------------------------------------------------");
+    System.out.println("| ID      | Name         | Price     | Quantity    |");
     for (int i = 0; i < list.size(); ++i) {
-      System.out.print((i+1) + ". ");
       System.out.println(list.get(i).getInfo());
     }
-
-    System.out.println();
+    System.out.println("----------------------------------------------------");
   }
 
   public static void deleteProduct(ArrayList<Products> list) {
@@ -99,6 +154,7 @@ public class Utils {
     boolean quit = false;
 
     while (!quit) {
+      System.out.println();
       System.out.println("Product ID");
       System.out.print("> ");
       id = utilScan.nextLine();
@@ -123,18 +179,20 @@ public class Utils {
   }
 
   public static void editProduct(ArrayList<Products> list) {
+    if (list.size() < 1) {
+      System.out.println("Null list!");
+      return;
+    }
+
     String name;
     double price;
     long quantity;
     String id;
     boolean quit = false;
 
-    if (list.size() < 1) {
-      System.out.println("Null list!");
-      return;
-    }
 
     while (!quit) {
+      System.out.println();
       System.out.println("Product ID");
       System.out.print("> ");
       id = utilScan.nextLine();
@@ -180,30 +238,31 @@ public class Utils {
     System.out.println("****");
     System.out.println("DONE");
     System.out.println("****");
-    System.out.println();
   }
 
   public static void searchProductByName(ArrayList<Products> list) {
-    System.out.println("Search");
-    System.out.print("> ");
-    String keyWord = utilScan.nextLine();
-
     if (list.size() < 1) {
       System.out.println("Null list!");
       return;
     }
 
+    System.out.println();
+    System.out.println("Search");
+    System.out.print("> ");
+    String keyWord = utilScan.nextLine();
+
+
     // Case-Insensitive Search
+    System.out.println("----------------------------------------------------");
+    System.out.println("| ID      | Name         | Price     | Quantity    |");
     if (!(keyWord == "")) {
       for (int i = 0; i < list.size(); i++) {
         if (list.get(i).name.toLowerCase().contains(keyWord.toLowerCase())) {
-          System.out.print((i+1) + ". ");
           System.out.println(list.get(i).getInfo());
         } 
       }
     }
-
-    System.out.println();
+    System.out.println("----------------------------------------------------");
   }
 
 
@@ -229,6 +288,9 @@ public class Utils {
     int i = list.size();
 
     // Sort by price. Additionally, when two prices are the same, also sort names.
+    System.out.println("*------------------SORT BY PRICE-------------------*");
+    System.out.println("----------------------------------------------------");
+    System.out.println("| ID      | Name         | Price     | Quantity    |");
     while (i > 0) {
       try {
         price = mapPrices.get(0);
@@ -244,7 +306,8 @@ public class Utils {
         }
 
         for (int x = 0; x < list.size(); x++) {
-          if ((price == list.get(x).price) && (name.equals(list.get(x).name))) {
+          if ((price == list.get(x).price) &&
+        (name.equals(list.get(x).name))) {
             System.out.println(list.get(x).getInfo());
             mapPrices.remove(0);
             mapNames.remove(j);
@@ -254,7 +317,7 @@ public class Utils {
       }
       --i;
     }
-    System.out.println();
+    System.out.println("----------------------------------------------------");
   }
 
   // Save/load list of products to/from a binary file
@@ -275,17 +338,33 @@ public class Utils {
   }
 
   public static void loadProductsFromFile(ArrayList<Products> list) {
-    if (list.size() > 0) {
-      System.out.println("Overwrite current list?");
-      System.out.println("[1]. No");
-      System.out.println("[2]. Yes");
-      System.out.print("> ");
-      int choice = utilScan.nextInt();
-      if (choice == 1) {
-        return;
+
+    while (true) {
+      if (list.size() > 0) {
+        int choice;
+
+        System.out.println("Overwrite current list?");
+        System.out.println("[1]. No");
+        System.out.println("[2]. Yes");
+        System.out.print("> ");
+
+        try {
+          choice = utilScan.nextInt();
+          utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        } catch (Exception e) {
+          utilScan.nextLine();
+          continue;
+        }
+
+        if (choice == 1) {
+          utilScan.nextLine();
+          return;
+        }
       }
+      break;
     }
 
+    System.out.println();
     System.out.println("File name");
     System.out.print("> ");
     File f = new File(utilScan.nextLine());
@@ -297,10 +376,12 @@ public class Utils {
       list.clear();
 
       for (int i = 0; i < tmp.size(); i++) {
-        list.add(new Products(tmp.get(i).name, tmp.get(i).price, tmp.get(i).quantity));
+        list.add(new Products(tmp.get(i).name,
+          tmp.get(i).price,
+          tmp.get(i).quantity));
       }
     } catch (Exception e) {
+      System.out.println("File not found!");
     }
   }
-
 }
