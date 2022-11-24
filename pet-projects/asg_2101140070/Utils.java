@@ -54,7 +54,7 @@ public class Utils {
 
       int choice = 0;
       for (int j = 0; j < list.size(); j++) {
-        if ((name.equals(list.get(j).name) && (price == list.get(j).price))) {
+        if ((name.equals(list.get(j).getName()) && (price == list.get(j).getPrice()))) {
           System.out.println("This item has existed");
           System.out.println("Increment the quantity of this?");
           System.out.println("[1]. No");
@@ -85,7 +85,7 @@ public class Utils {
               }
             }
 
-            list.set(j, new Products(name, price, quantity + list.get(j).quantity));
+            list.set(j, new Products(name, price, quantity + list.get(j).getQuantity()));
             utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
             return;
           }
@@ -126,6 +126,7 @@ public class Utils {
       return;
     }
 
+    System.out.println();
     System.out.println("*---------------------PRODUCTS---------------------*");
     System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
@@ -151,7 +152,7 @@ public class Utils {
       id = utilScan.nextLine();
 
       for (int i = 0; i < list.size(); i++) {
-        if (id.equals(list.get(i).id)) {
+        if (id.equals(list.get(i).getId())) {
           quit = true;
           list.remove(i);
 
@@ -188,7 +189,7 @@ public class Utils {
       System.out.print("> ");
       id = utilScan.nextLine();
       for (int i = 0; i < list.size(); i++) {
-        if (id.equals(list.get(i).id)) {
+        if (id.equals(list.get(i).getId())) {
           quit = true;
           System.out.println("Name");  
           System.out.print("> ");
@@ -216,7 +217,7 @@ public class Utils {
             }
           }
 
-          list.set(i, new Products(name, price, quantity));
+          list.set(i, new Products(name, price, quantity, list.get(i).getId()));
           utilScan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
           break;
         } else if (i == list.size() - 1) {
@@ -242,13 +243,13 @@ public class Utils {
     System.out.print("> ");
     String keyWord = utilScan.nextLine();
 
-
     // Case-Insensitive Search
+    System.out.println();
     System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
     if (!(keyWord == "")) {
       for (int i = 0; i < list.size(); i++) {
-        if (list.get(i).name.toLowerCase().contains(keyWord.toLowerCase())) {
+        if (list.get(i).getName().toLowerCase().contains(keyWord.toLowerCase())) {
           System.out.println(list.get(i).getInfo());
         } 
       }
@@ -267,8 +268,8 @@ public class Utils {
     List<Double> mapPrices = new ArrayList<>();
 
     for (int i = 0; i < list.size(); i++) {
-      mapNames.add(list.get(i).name);
-      mapPrices.add(list.get(i).price);
+      mapNames.add(list.get(i).getName());
+      mapPrices.add(list.get(i).getPrice());
     }
 
     Collections.sort(mapNames);
@@ -278,6 +279,7 @@ public class Utils {
     String name;
     int i = list.size();
 
+    System.out.println();
     System.out.println("*------------------SORT BY PRICE-------------------*");
     System.out.println("+--------------------------------------------------+");
     System.out.println("| ID      | Name         | Price     | Quantity    |");
@@ -288,8 +290,8 @@ public class Utils {
         name = mapNames.get(j);
 
         for (int x = 0; x < list.size(); x++) {
-          if ((price == list.get(x).price) &&
-             (name.equals(list.get(x).name))) {
+          if ((price == list.get(x).getPrice()) &&
+        (name.equals(list.get(x).getName()))) {
             System.out.println(list.get(x).getInfo());
             mapPrices.remove(0);
             mapNames.remove(j);
@@ -338,7 +340,6 @@ public class Utils {
         }
 
         if (choice == 1) {
-          utilScan.nextLine();
           return;
         }
       }
@@ -357,9 +358,10 @@ public class Utils {
       list.clear();
 
       for (int i = 0; i < tmp.size(); i++) {
-        list.add(new Products(tmp.get(i).name,
-          tmp.get(i).price,
-          tmp.get(i).quantity));
+        list.add(new Products(tmp.get(i).getName(),
+          tmp.get(i).getPrice(),
+          tmp.get(i).getQuantity(),
+          tmp.get(i).getId()));
       }
     } catch (Exception e) {
       System.out.println("File not found!");

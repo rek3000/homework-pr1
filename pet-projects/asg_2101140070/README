@@ -1,0 +1,9 @@
+HOW TO RUN:
+1. Open a terminal in the folder containing this.
+2. to run: make run
+3. to clean class files: make clean
+
+NOTE: After editing files, do "make clean" first then "make run" after.
+
+Github: https://github.com/rek3000
+Link to source: https://github.com/rek3000/homework-pr1/tree/main/pet-projects/asg_2101140070
