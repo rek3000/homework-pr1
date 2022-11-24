@@ -19,6 +19,7 @@ public class Init {
   static Scanner initScan = new Scanner(System.in);
   public static void main(String[] args) {
     ArrayList<Products> list = new ArrayList<>();
+    banner();
     menuLoop(list);
   }
 
@@ -91,5 +92,12 @@ public class Init {
           break;
       }
     }
+  }
+
+  public static void banner() {
+    System.out.println();
+    System.out.println("    |\\__/,|   (`\\");
+    System.out.println("  _.|o o  |_   ) )");
+    System.out.println("+(((---(((--------");
   }
 }
