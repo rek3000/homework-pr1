@@ -1,13 +1,25 @@
-/* SOURCE: */
+/* 
+      ___           ___           ___
+     /  /\         /  /\         /__/|    
+    /  /::\       /  /:/_       |  |:|    
+   /  /:/\:\     /  /:/ /\      |  |:|    
+  /  /:/~/:/    /  /:/ /:/_   __|  |:|    
+ /__/:/ /:/___ /__/:/ /:/ /\ /__/\_|:|____
+ \  \:\/:::::/ \  \:\/:/ /:/ \  \:\/:::::/
+  \  \::/~~~~   \  \::/ /:/   \  \::/~~~~ 
+   \  \:\        \  \:\/:/     \  \:\     
+    \  \:\        \  \::/       \  \:\    
+     \__\/         \__\/         \__\/
+
+*/
+/* A SUCK PRODUCTS MANAGEMENT TOOL */
 import java.util.*;
 
 public class Init {
   static Scanner initScan = new Scanner(System.in);
   public static void main(String[] args) {
-
     ArrayList<Products> list = new ArrayList<>();
     menuLoop(list);
-
   }
 
   private static void menuLoop(ArrayList<Products> list) {
@@ -26,7 +38,6 @@ public class Init {
       System.out.println("+----------------------------------------+");
       System.out.print("> ");
       
-
       int choice;
       try {
         choice = initScan.nextInt();
@@ -79,7 +90,6 @@ public class Init {
         default:
           break;
       }
-
     }
   }
 }

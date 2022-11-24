@@ -71,6 +71,7 @@ public class Utils {
               continue;
             }
           }
+
           if (choice == 2) {
             while (true) {
               System.out.println("Quantity");  
@@ -182,7 +183,6 @@ public class Utils {
     String id;
     boolean quit = false;
 
-
     while (!quit) {
       System.out.println();
       System.out.println("Product ID");
@@ -288,7 +288,6 @@ public class Utils {
 
       for (int j = 0; j < mapNames.size(); j++) {
         name = mapNames.get(j);
-
         for (int x = 0; x < list.size(); x++) {
           if ((price == list.get(x).getPrice()) &&
         (name.equals(list.get(x).getName()))) {
@@ -308,6 +307,7 @@ public class Utils {
     System.out.println("Be careful! You may overwrite the current saved files.");
     System.out.println("File name");
     System.out.print("> ");
+
     File f = new File(utilScan.nextLine());
     try {
       FileOutputStream fos = new FileOutputStream(f);
@@ -349,6 +349,7 @@ public class Utils {
     System.out.println();
     System.out.println("File name");
     System.out.print("> ");
+
     File f = new File(utilScan.nextLine());
     try {
       FileInputStream fis = new FileInputStream(f);
